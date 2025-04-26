@@ -4,6 +4,7 @@
  */
 
 
+#include <cassert>
 #include "khaiii/nn/Conv1d.hpp"
 
 
@@ -11,9 +12,6 @@
 // includes //
 //////////////
 #include <string>
-
-#include "khaiii/util.hpp"
-
 
 namespace khaiii {
 namespace nn {
