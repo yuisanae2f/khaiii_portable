@@ -43,7 +43,7 @@ shared_ptr<spdlog::logger> Embed::_log = spdlog::stderr_color_mt("Embed");
 void Embed::open(const Config& cfg, const char* dir) {
 	assert(dir);
 
-    _embed_mmf.open(fmt::format("{}/embed.bin", dir));
+    _embed_mmf.open(fmt::format("{}/embed.bin", dir).c_str());
     _keys = reinterpret_cast<const wchar_t*>(_embed_mmf.data());
     const float* val_start = reinterpret_cast<const float*>(_keys + cfg.vocab_size);
     for (int i = 0; i < cfg.vocab_size; ++i) {

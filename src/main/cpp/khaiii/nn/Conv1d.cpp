@@ -32,7 +32,7 @@ Conv1d::~Conv1d() {
 /////////////
 // methods //
 /////////////
-void Conv1d::open(string path, int in_ch, int out_ch, int kernel_size,
+void Conv1d::open(const char* path, int in_ch, int out_ch, int kernel_size,
                   const activation_t* activation) {
     _param_mmf.open(path);
     assert(_param_mmf.size() == (in_ch * out_ch * kernel_size + out_ch));

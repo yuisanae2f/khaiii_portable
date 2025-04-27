@@ -52,11 +52,11 @@ void Resource::open(const Config& cfg, const char* _dir) {
     embed.open(cfg, _dir);
     for (int kernel_size = 2; kernel_size < 6; ++kernel_size) {
         string path = fmt::format("{}/conv.{}.fil", _dir, kernel_size);
-        convs[kernel_size].open(path, cfg.embed_dim, cfg.embed_dim, kernel_size, &nn::RELU);
+        convs[kernel_size].open(path.c_str(), cfg.embed_dim, cfg.embed_dim, kernel_size, &nn::RELU);
     }
-    cnv2hdn.open(dir + "/cnv2hdn.lin", 4 * cfg.embed_dim, cfg.hidden_dim, true, &nn::RELU);
+    cnv2hdn.open((dir + "/cnv2hdn.lin").c_str(), 4 * cfg.embed_dim, cfg.hidden_dim, true, &nn::RELU);
     string path = fmt::format("{}/hdn2tag.lin", _dir);
-    hdn2tag.open(path, cfg.hidden_dim, cfg.class_num, true);
+    hdn2tag.open(path.c_str(), cfg.hidden_dim, cfg.class_num, true);
     _log->info("NN model loaded");
     preanal.open(_dir);
     errpatch.open(_dir);

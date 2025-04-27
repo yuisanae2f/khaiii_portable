@@ -81,16 +81,16 @@ void Restore::open(const char* dir) {
 	assert(dir);
 
 	std::string _dir(dir); _dir += "/restore.key";
-	_key_mmf.open(_dir);
+	_key_mmf.open(_dir.c_str());
 	size_t drsz = _dir.length();
 
 	_dir.replace(drsz - 3, 3, "val");
-	_val_mmf.open(_dir);
+	_val_mmf.open(_dir.c_str());
 	assert(_key_mmf.size() * _MAX_VAL_LEN == _val_mmf.size());
 
 
 	_dir.replace(drsz - 3, 3, "one");
-	_one_mmf.open(_dir);
+	_one_mmf.open(_dir.c_str());
 #ifndef NDEBUG
     for (int i = 0; i < _one_mmf.size(); ++i) {
         SPDLOG_TRACE(_log, "{}: {}, ", i, _one_mmf.data()[i]);
