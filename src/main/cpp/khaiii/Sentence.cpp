@@ -112,8 +112,8 @@ void Sentence::_tokenize() {
 
 void Sentence::_characterize() {
     assert(_raw != nullptr);
-    auto en_US_utf8 = locale("en_US.UTF-8");
-    auto& facet = use_facet<codecvt<wchar_t, char, mbstate_t>>(en_US_utf8);
+    std::locale en_sysdefault_utf8 = locale("");
+    auto& facet = use_facet<codecvt<wchar_t, char, mbstate_t>>(en_sysdefault_utf8);
     auto mbst = mbstate_t();
     const char* from_next = nullptr;
     wstringstream wss;
